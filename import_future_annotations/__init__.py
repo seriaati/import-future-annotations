@@ -22,7 +22,7 @@ def _fix_file(filename: str, args: argparse.Namespace) -> int:
     if not args.allow_empty and os.stat(filename).st_size <= 0:
         return 0
 
-    with open(filename, "r+") as f:
+    with open(filename, "r+", encoding="utf-8") as f:
         content = f.read()
         if not _is_annotations_import(content):
             if not args.check_only:
